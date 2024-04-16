@@ -8,6 +8,7 @@ import com.zhang.ssmschoolshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service("userService")
@@ -41,6 +42,12 @@ public class UserServiceImpl implements UserService {
         userMapper.updateByPrimaryKeySelective(user);
     }
 
+    @Override
+    public void saveUser(User user) {
+        user.setRegtime(new Date());
+        user.setPassword("123456");
+        userMapper.insert(user);
+    }
 
 
 }

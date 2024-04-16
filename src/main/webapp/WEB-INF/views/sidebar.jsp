@@ -3,6 +3,7 @@
   User: zhangxin
   Date: 2019/5/13
   Time: 15:45
+  侧边导航栏，同时会发送请求
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="templatemo-sidebar">

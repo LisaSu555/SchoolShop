@@ -17,4 +17,5 @@ public interface UserService {
 
     public void updateByPrimaryKeySelective(User user);
 
+    void saveUser(User user);
 }

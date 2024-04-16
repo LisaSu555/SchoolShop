@@ -41,18 +41,17 @@
     <jsp:include page="sidebar.jsp"></jsp:include>
     <!-- Main content -->
     <div class="templatemo-content col-1 light-gray-bg">
-        <div class="templatemo-top-nav-container">
-            <div class="row">
-                <nav class="templatemo-top-nav col-lg-12 col-md-12">
-                    <ul class="text-uppercase">
-                        <li><a href="" class="active">所有用户</a></li>
-                        <%--<li><a href="">Dashboard</a></li>
-                        <li><a href="">Overview</a></li>
-                        <li><a href="login.html">Sign in form</a></li>--%>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<%--        // 添加用户页面列表上面的页签--%>
+        <jsp:include page="userNav.jsp"/>
+<%--        <div class="templatemo-top-nav-container">--%>
+<%--            <div class="row">--%>
+<%--                <nav class="templatemo-top-nav col-lg-12 col-md-12">--%>
+<%--                    <ul class="text-uppercase">--%>
+<%--                        <li><a href="" class="active">所有用户</a></li>--%>
+<%--                    </ul>--%>
+<%--                </nav>--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <div class="templatemo-content-container">
             <div class="templatemo-content-widget no-padding">
                 <div class="panel panel-default table-responsive">
@@ -80,19 +79,20 @@
         </div>
     </div>
 </div>
+<%--有嫌疑--%>
 <div id="path" style="display: none;">${pageContext.request.contextPath}</div>
 <!-- JS -->
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
 <script src="${pageContext.request.contextPath}/js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
-<script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
+<%--<script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->--%>
 <script>
     /* Google Chart
      -------------------------------------------------------------------*/
     // Load the Visualization API and the piechart package.
-    google.load('visualization', '1.0', {'packages':['corechart']});
+    //google.load('visualization', '1.0', {'packages':['corechart']});
 
     // Set a callback to run when the Google Visualization API is loaded.
-    google.setOnLoadCallback(drawChart);
+    //google.setOnLoadCallback(drawChart);
 
     // Callback that creates and populates a data table,
     // instantiates the pie chart, passes in the data and
@@ -100,46 +100,46 @@
     function drawChart() {
 
         // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-            ['Mushrooms', 3],
-            ['Onions', 1],
-            ['Olives', 1],
-            ['Zucchini', 1],
-            ['Pepperoni', 2]
-        ]);
+        // var data = new google.visualization.DataTable();
+        // data.addColumn('string', 'Topping');
+        // data.addColumn('number', 'Slices');
+        // data.addRows([
+        //     ['Mushrooms', 3],
+        //     ['Onions', 1],
+        //     ['Olives', 1],
+        //     ['Zucchini', 1],
+        //     ['Pepperoni', 2]
+        // ]);
 
-        // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night'};
-
-        // Instantiate and draw our chart, passing in some options.
-        var pieChart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
-        pieChart.draw(data, options);
-
-        var barChart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
-        barChart.draw(data, options);
+        // // Set chart options
+        // var options = {'title':'How Much Pizza I Ate Last Night'};
+        //
+        // // Instantiate and draw our chart, passing in some options.
+        // var pieChart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
+        // pieChart.draw(data, options);
+        //
+        // var barChart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
+        // barChart.draw(data, options);
     }
 
-    $(document).ready(function(){
-        if($.browser.mozilla) {
-            //refresh page on browser resize
-            // http://www.sitepoint.com/jquery-refresh-page-browser-resize/
-            $(window).bind('resize', function(e)
-            {
-                if (window.RT) clearTimeout(window.RT);
-                window.RT = setTimeout(function()
-                {
-                    this.location.reload(false); /* false to get page from cache */
-                }, 200);
-            });
-        } else {
-            $(window).resize(function(){
-                drawChart();
-            });
-        }
-    });
+    // $(document).ready(function(){
+    //     if($.browser.mozilla) {
+    //         //refresh page on browser resize
+    //         // http://www.sitepoint.com/jquery-refresh-page-browser-resize/
+    //         $(window).bind('resize', function(e)
+    //         {
+    //             if (window.RT) clearTimeout(window.RT);
+    //             window.RT = setTimeout(function()
+    //             {
+    //                 this.location.reload(false); /* false to get page from cache */
+    //             }, 200);
+    //         });
+    //     } else {
+    //         $(window).resize(function(){
+    //             drawChart();
+    //         });
+    //     }
+    // });
 
 </script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/templatemo-script.js"></script>      <!-- Templatemo Script -->
