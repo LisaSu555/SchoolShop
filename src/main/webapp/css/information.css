@@ -884,7 +884,7 @@ span.cdown strong {
 }
 
 .bs-docs-example {
-	width: 
+	width: 100px !important;
 }
 
 .part {
