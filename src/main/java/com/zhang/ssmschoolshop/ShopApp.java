@@ -5,21 +5,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.Bean;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
 @MapperScan("com.zhang.ssmschoolshop.dao")
-public class SpringbootSchoolShopApplication extends SpringBootServletInitializer {
+public class ShopApp extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(SpringbootSchoolShopApplication.class);
+        return builder.sources(ShopApp.class);
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringbootSchoolShopApplication.class, args);
+        SpringApplication.run(ShopApp.class, args);
     }
 
 
