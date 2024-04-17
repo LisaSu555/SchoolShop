@@ -10,11 +10,59 @@ $(document).ready(function () {
 
 });
 
+// 点击编辑后出现模态框
+$(document).on("click",".templatemo-edit-btn",function () {
+    $("#update-user").modal({
+        backdrop:'static'
+    });
+    var userId = $(this).parents("tr").find("td:eq(0)").text();
+    var username = $(this).parents("tr").find("td:eq(1)").text();
+    var email = $(this).parents("tr").find("td:eq(2)").text();
+    var phoneNumber = $(this).parents("tr").find("td:eq(3)").text();
+
+
+    $("#userid").val(userId);
+    $("#username").val(username);
+    $("#email").val(email);
+    $("#phone").val(phoneNumber);
+
+    console.log(username);
+});
+
+//执行保存操作，点击模态框的保存后执行这个方法
+$(document).on("click","#saveUpdate",function () {
+    var userId = $("#userid").val();
+    var username = $("#username").val();
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+
+    $.ajax({
+        url:"/shop/admin/user/update/",
+        type:"POST",
+        data:{
+            userid:userId,
+            username:username,
+            email:email,
+            telephone:phone
+        },
+        success:function(result){
+            // 隐藏这个模态框
+            $("#update-user").modal('hide');
+            swal(result.msg,'','success');
+            to_page('/shop',currentPage);
+        },
+        error:function(){
+            alert("错误！！");
+        }
+    });
+});
+
+//  删除的方法
 $(document).on("click",".templatemo-delete-btn",function () {
-    var goodsname = $(this).parents("tr").find("td:eq(1)").text();
-    var goodsid = $(this).parents("tr").find("td:eq(0)").text();
+    var username = $(this).parents("tr").find("td:eq(1)").text();
+    var userId = $(this).parents("tr").find("td:eq(0)").text();
     swal({
-            title: "确定删除" + goodsname + "吗？",
+            title: "确定删除" + username + "吗？",
             type: "warning",
             showCancelButton: true,
             cancelButtonText:"取消",
@@ -25,7 +73,7 @@ $(document).on("click",".templatemo-delete-btn",function () {
         function () {
             /*swal("删除！", "你的虚拟文件已经被删除。", "success");*/
             $.ajax({
-                url: "/shop/admin/user/delete/" + goodsid,
+                url: "/shop/admin/user/delete/" + userId,
                 type: "DELETE",
                 success:function (result) {
                     swal(result.msg, "","success");
@@ -67,17 +115,18 @@ function build_user_table(path,result) {
         var username = $("<td></td>").append(item.username);
         var email = $("<td></td>").append(item.email);
         var telephone = $("<td></td>").append(item.telephone);
-
+        var editBtn = $("<button></button>").addClass("templatemo-edit-btn").append("编辑");
         var deleteBtn = $("<button></button>").addClass("templatemo-delete-btn").append("删除");
 
-        var deleteTd = $("<td></td>").append(deleteBtn);
+        var operateTd = $("<td width='200px'></td>").append(editBtn).append(deleteBtn);
 
 
         $("<tr></tr>").append(userid)
-            .append(username)
-            .append(email)
-            .append(telephone)
-            .append(deleteTd).appendTo("#goodsinfo tbody");
+                      .append(username)
+                      .append(email)
+                      .append(telephone)
+                      .append(operateTd)
+                      .appendTo("#goodsinfo tbody");
     })
 }
 

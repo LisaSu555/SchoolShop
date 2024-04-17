@@ -54,12 +54,6 @@ $(document).on("click","#saveUpdate",function () {
     var ucategory = $("#category").val();
     var udetailcate = $("#detailcate").val();
 
-    /*var option = {
-        url: '/shop/admin/goods/update/'+goodsid,
-        type:'post',
-    };
-    $("#update-goods").ajaxForm(option);*/
-
     $.ajax({
         url:"/shop/admin/goods/update/",
         type:"POST",
@@ -81,23 +75,6 @@ $(document).on("click","#saveUpdate",function () {
             alert("错误！！");
         }
     });
-
-    /*var goodsid = $("#goodsid").text();
-    var updateForm = new FormData(document.getElementById("update-goods"));
-    $.ajax({
-        url:"/shop/admin/goods/update/" + goodsid,
-        type:"post",
-        data:updateForm,
-        processData:false,
-        contentType:false,
-        success:function(result){
-            swal(result.msg,'','success');
-        },
-        error:function(){
-            alert("错误！！");
-            window.clearInterval(timer);
-        }
-    });*/
 });
 
 $(document).on("click",".templatemo-delete-btn",function () {

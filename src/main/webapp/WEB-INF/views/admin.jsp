@@ -13,7 +13,7 @@
     Visual Admin Template
     http://www.templatemo.com/preview/templatemo_455_visual_admin
     -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+<%--    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>--%>
     <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/templatemo-style.css" rel="stylesheet">
@@ -174,9 +174,9 @@
                 </div>
             </div>
             <footer class="text-right">
-                <div class="button">欢迎报考长沙理工大学</div>
-                <p>Copyright &copy; 2019 Company Name
-                    | Designed by <a href="http://www.templatemo.com" target="_parent">张鑫</a></p>
+                <div class="button">后台管理系统</div>
+                <p>Copyright &copy; Kiwa Company Name
+                    | Designed by <a href="http://www.templatemo.com" target="_parent">Kiwa</a></p>
             </footer>
         </div>
     </div>

@@ -15,7 +15,7 @@
     <title>后台管理</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+<%--    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>--%>
     <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/templatemo-style.css" rel="stylesheet">
@@ -45,7 +45,7 @@
         <jsp:include page="userNav.jsp"></jsp:include>
         <div class="templatemo-content-container">
             <div class="templatemo-content-widget white-bg">
-                <h2 class="margin-bottom-10">添加商品</h2>
+                <h2 class="margin-bottom-10">添加用户</h2>
                 <form action="${pageContext.request.contextPath}/admin/user/save" class="templatemo-login-form" method="post" enctype="multipart/form-data">
                     <div class="row form-group">
                         <div class="col-lg-12 form-group">
