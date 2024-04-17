@@ -11,7 +11,7 @@ $(document).ready(function () {
 });
 
 // 点击编辑后出现模态框
-$(document).on("click",".templatemo-edit-btn",function () {
+$(document).on("click",".btn-info",function () {
     $("#update-user").modal({
         backdrop:'static'
     });
@@ -20,6 +20,10 @@ $(document).on("click",".templatemo-edit-btn",function () {
 
     $("#userid").val(userId);
     $("#username").val(username);
+
+    $("#psw").val("");
+    $("#psw2").val("");
+    $("#psw3").val("");
 
 });
 
@@ -93,7 +97,7 @@ function build_user_table(path,result) {
     $.each(goods, function (index,item) {
         var userid = $("<td></td>").append(item.userid);
         var username = $("<td></td>").append(item.username);
-        var editBtn = $("<button></button>").addClass("templatemo-edit-btn").append("修改密码");
+        var editBtn = $("<button></button>").addClass("btn-info").append("修改密码");
         var operateTd = $("<td></td>").append(editBtn)
         $("<tr></tr>").append(userid)
             .append(username)

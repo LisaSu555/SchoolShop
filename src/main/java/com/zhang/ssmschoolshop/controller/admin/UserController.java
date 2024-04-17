@@ -43,33 +43,60 @@ public class UserController {
     }
 
     @GetMapping("/show")
-    public String userManage() {
+    public String userManage(HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            return "adminLogin";
+        }
         return "userManage";
     }
 
     @RequestMapping(value = "/delete/{userid}", method = RequestMethod.DELETE)
     @ResponseBody
-    public Msg deleteUser(@PathVariable("userid")Integer userid) {
-//        goodsService.deleteGoodsById(goodsid);
+    public Msg deleteUser(@PathVariable("userid")Integer userid,HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            return Msg.fail("请先登录!");
+        }
         userService.deleteUserById(userid);
         return Msg.success("删除成功!");
     }
 
     @GetMapping("/add")
-    public String userAddPage() {
+    public String userAddPage(HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            return "adminLogin";
+        }
         return "userAdd";
     }
 
     @GetMapping("/update_psw")
-    public String userUpdatePsw() {
+    public String userUpdatePsw(HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            return "adminLogin";
+        }
         return "userPswEdit";
     }
 
     @PostMapping("save")
-    public String saveUser(User user, HttpServletRequest request, HttpServletResponse response,
-                           RedirectAttributes redirectAttributes) throws IOException {
-        userService.saveUser(user);
-        return "redirect:/admin/user/show";
+    public String saveUser(User user, HttpSession session, Model model) throws IOException {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            //return Msg.fail("请先登录");
+            return "adminLogin";
+        }
+        String saveResult = userService.saveUser(user);
+        if("0000".equals(saveResult)){
+            model.addAttribute("msg","0000");
+            return "userManage";
+            //return Msg.success(saveResult);
+        }else{
+            //return Msg.fail(saveResult);
+            model.addAttribute("msg","4000");
+            return "userAdd";
+        }
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)

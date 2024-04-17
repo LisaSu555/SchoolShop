@@ -24,9 +24,18 @@ public class LoginController {
         return "adminLogin";
     }
 
+    /**
+     * 登录验证
+     * @param admin
+     * @param model
+     * @param request
+     * @return
+     */
     @RequestMapping("/confirmLogin")
     public String confirmLogin(Admin admin, Model model, HttpServletRequest request) {
+        // 密码转换
         admin.setPassword(Md5Util.MD5Encode(admin.getPassword(),"utf-8"));
+        // 数据库只有一个管理员信息，代表管理员只能有一个，当然，后面可以添加更多的
         Admin selectAdmin = adminService.selectByName(admin);
         if (selectAdmin == null) {
             model.addAttribute("errorMsg", "用户名或密码错误");

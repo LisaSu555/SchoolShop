@@ -14,22 +14,15 @@
     <title>后台管理</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
-    <!--
-    Visual Admin Template
-    http://www.templatemo.com/preview/templatemo_455_visual_admin
-    -->
-<%--    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>--%>
     <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/templatemo-style.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
     <%--swal弹框--%>
     <script src="${pageContext.request.contextPath}/js/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sweetalert.css">

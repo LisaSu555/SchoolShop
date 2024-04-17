@@ -46,12 +46,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(User user) {
+    public String saveUser(User user) {
+        if(StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getEmail())
+                                                   || StringUtils.isEmpty(user.getTelephone())){
+            return "5000";
+        }
         String pswd = "123456";
         String pswdMD5 = Md5Util.MD5Encode(pswd, "utf-8");
         user.setRegtime(new Date());
         user.setPassword(pswdMD5);
         userMapper.insert(user);
+        return "0000";
     }
 
     /**

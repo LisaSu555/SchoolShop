@@ -6,7 +6,6 @@
                 <li><a href="${pageContext.request.contextPath}/admin/user/show">所有用户</a></li>
                 <li><a href="${pageContext.request.contextPath}/admin/user/add">添加用户</a></li>
                 <li><a href="${pageContext.request.contextPath}/admin/user/update_psw">修改密码</a></li>
-                <%--<li><a href="login.html">。。。</a></li>--%>
             </ul>
         </nav>
     </div>

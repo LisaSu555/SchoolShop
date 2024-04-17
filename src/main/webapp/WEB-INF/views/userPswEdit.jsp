@@ -74,7 +74,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">修改用户信息</h4>
+                <h4 class="modal-title" id="myModalLabel">修改用户密码</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="update-form" name="update-form" method="post">
@@ -92,21 +92,21 @@
                     <div class="form-group">
                         <label for="psw" class="col-sm-2 control-label">旧密码</label>
                         <div class="col-sm-9">
-                            <input type="text" required="required" class="form-control" name="originPsw" id="psw">
+                            <input type="password" required="required" class="form-control" name="originPsw" id="psw">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="psw2" class="col-sm-2 control-label">新密码</label>
                         <div class="col-sm-9">
-                            <input type="text" required="required" class="form-control" name="password" id="psw2">
+                            <input type="password" required="required" class="form-control" name="password" id="psw2">
                         </div>
                     </div>
 
                         <div class="form-group">
                             <label for="psw3" class="col-sm-2 control-label">确认密码</label>
                             <div class="col-sm-9">
-                                <input type="text" required="required" class="form-control" name="password2" id="psw3">
+                                <input type="password" required="required" class="form-control" name="password2" id="psw3">
                             </div>
                         </div>
                 </form>
