@@ -88,13 +88,27 @@
                         </div>
                     </div>
 
+
+                    <div class="form-group">
+                        <label for="psw" class="col-sm-2 control-label">旧密码</label>
+                        <div class="col-sm-9">
+                            <input type="text" required="required" class="form-control" name="originPsw" id="psw">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="psw2" class="col-sm-2 control-label">新密码</label>
+                        <div class="col-sm-9">
+                            <input type="text" required="required" class="form-control" name="password" id="psw2">
+                        </div>
+                    </div>
+
                         <div class="form-group">
-                            <label for="psw" class="col-sm-2 control-label">密码</label>
+                            <label for="psw3" class="col-sm-2 control-label">确认密码</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="password" id="psw">
+                                <input type="text" required="required" class="form-control" name="password2" id="psw3">
                             </div>
                         </div>
-
                 </form>
             </div>
             <div class="modal-footer">
@@ -113,7 +127,6 @@
 <script src="${pageContext.request.contextPath}/css/bootstrap/js/bootstrap.min.js"></script>
 
 <script>
-
 
 </script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/templatemo-script.js"></script>      <!-- Templatemo Script -->

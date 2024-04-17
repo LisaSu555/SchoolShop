@@ -3,6 +3,7 @@ package com.zhang.ssmschoolshop.service;
 
 import com.zhang.ssmschoolshop.entity.User;
 import com.zhang.ssmschoolshop.entity.UserExample;
+import com.zhang.ssmschoolshop.entity.UserVi;
 
 import java.util.List;
 
@@ -19,5 +20,5 @@ public interface UserService {
 
     void saveUser(User user);
 
-    String updateUser(User user);
+    String updateUser(UserVi user);
 }

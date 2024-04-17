@@ -3,10 +3,7 @@ package com.zhang.ssmschoolshop.controller.admin;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-import com.zhang.ssmschoolshop.entity.Admin;
-import com.zhang.ssmschoolshop.entity.Goods;
-import com.zhang.ssmschoolshop.entity.User;
-import com.zhang.ssmschoolshop.entity.UserExample;
+import com.zhang.ssmschoolshop.entity.*;
 import com.zhang.ssmschoolshop.service.UserService;
 import com.zhang.ssmschoolshop.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +74,7 @@ public class UserController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
-    public Msg updateUser(User user, HttpSession session) {
+    public Msg updateUser(UserVi user, HttpSession session) {
         Admin admin = (Admin) session.getAttribute("admin");
         if (admin == null) {
             return Msg.fail("请先登录");
@@ -86,9 +83,7 @@ public class UserController {
         if("0000".equals(resultMsg)){
             return Msg.success("更新成功!");
         }else {
-            return Msg.fail("更新失败");
+            return Msg.fail(resultMsg);
         }
     }
-
-
 }

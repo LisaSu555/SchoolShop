@@ -17,14 +17,9 @@ $(document).on("click",".templatemo-edit-btn",function () {
     });
     var userId = $(this).parents("tr").find("td:eq(0)").text();
     var username = $(this).parents("tr").find("td:eq(1)").text();
-    var email = $(this).parents("tr").find("td:eq(2)").text();
-    var phoneNumber = $(this).parents("tr").find("td:eq(3)").text();
-
 
     $("#userid").val(userId);
     $("#username").val(username);
-    $("#email").val(email);
-    $("#phone").val(phoneNumber);
 
 });
 
@@ -32,8 +27,19 @@ $(document).on("click",".templatemo-edit-btn",function () {
 $(document).on("click","#saveUpdate",function () {
     var userId = $("#userid").val();
     var username = $("#username").val();
-    var email = $("#email").val();
-    var phone = $("#phone").val();
+    var opsw = $("#psw").val();
+    var psw = $("#psw2").val();
+    var psw2 = $("#psw3").val();
+
+    if(psw === '' || opsw === '' || psw === undefined || opsw === undefined || psw === null || opsw === null){
+        swal("密码不能为空",'','error');
+        return false;
+    }
+
+    if(psw !== psw2){
+        swal("请输入两次相同的新密码",'','error');
+        return false;
+    }
 
     $.ajax({
         url:"/shop/admin/user/update/",
@@ -41,13 +47,17 @@ $(document).on("click","#saveUpdate",function () {
         data:{
             userid:userId,
             username:username,
-            email:email,
-            telephone:phone
+            password:psw,
+            originPsw:opsw
         },
         success:function(result){
             // 隐藏这个模态框
             $("#update-user").modal('hide');
-            swal(result.msg,'','success');
+            if(result.msg === '更新成功!'){
+                swal(result.msg,'','success');
+            }else{
+                swal(result.msg,'','error');
+            }
             to_page('/shop',currentPage);
         },
         error:function(){
