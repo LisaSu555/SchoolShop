@@ -56,35 +56,6 @@ $(document).on("click","#saveUpdate",function () {
     });
 });
 
-//  删除的方法
-$(document).on("click",".templatemo-delete-btn",function () {
-    var username = $(this).parents("tr").find("td:eq(1)").text();
-    var userId = $(this).parents("tr").find("td:eq(0)").text();
-    swal({
-            title: "确定删除" + username + "吗？",
-            type: "warning",
-            showCancelButton: true,
-            cancelButtonText:"取消",
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "确定删除！",
-            closeOnConfirm: false,
-        },
-        function () {
-            /*swal("删除！", "你的虚拟文件已经被删除。", "success");*/
-            $.ajax({
-                url: "/shop/admin/user/delete/" + userId,
-                type: "DELETE",
-                success:function (result) {
-                    swal(result.msg, "","success");
-                    to_page('/shop',currentPage);
-                },
-                error:function () {
-                    /*to_page('/shop',currentPage);*/
-                }
-            });
-        });
-});
-
 function to_page(path, page) {
     $.ajax({
         url: path + "/admin/user/showjson",
@@ -112,20 +83,12 @@ function build_user_table(path,result) {
     $.each(goods, function (index,item) {
         var userid = $("<td></td>").append(item.userid);
         var username = $("<td></td>").append(item.username);
-        var email = $("<td></td>").append(item.email);
-        var telephone = $("<td></td>").append(item.telephone);
-        var editBtn = $("<button></button>").addClass("templatemo-edit-btn").append("编辑");
-        var deleteBtn = $("<button></button>").addClass("templatemo-delete-btn").append("删除");
-
-        var operateTd = $("<td width='200px'></td>").append(editBtn).append(deleteBtn);
-
-
+        var editBtn = $("<button></button>").addClass("templatemo-edit-btn").append("修改密码");
+        var operateTd = $("<td></td>").append(editBtn)
         $("<tr></tr>").append(userid)
-                      .append(username)
-                      .append(email)
-                      .append(telephone)
-                      .append(operateTd)
-                      .appendTo("#goodsinfo tbody");
+            .append(username)
+            .append(operateTd)
+            .appendTo("#goodsinfo tbody");
     })
 }
 

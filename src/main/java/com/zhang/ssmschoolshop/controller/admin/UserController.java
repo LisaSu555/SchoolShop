@@ -63,6 +63,11 @@ public class UserController {
         return "userAdd";
     }
 
+    @GetMapping("/update_psw")
+    public String userUpdatePsw() {
+        return "userPswEdit";
+    }
+
     @PostMapping("save")
     public String saveUser(User user, HttpServletRequest request, HttpServletResponse response,
                            RedirectAttributes redirectAttributes) throws IOException {
