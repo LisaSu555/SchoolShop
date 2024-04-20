@@ -28,7 +28,7 @@
     <!-- Main content -->
     <div class="templatemo-content col-1 light-gray-bg">
         <%--添加用户页面列表上面的页签--%>
-        <jsp:include page="userNav.jsp"/>
+        <jsp:include page="videoNav.jsp"/>
         <div class="templatemo-content-container">
             <div class="templatemo-content-widget no-padding">
                 <div class="panel panel-default table-responsive">
@@ -59,36 +59,36 @@
 
 <%--修改用户信息模态框--%>
 <!-- Modal -->
-<div class="modal fade" id="update-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="update-obj" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">修改用户信息</h4>
+                <h4 class="modal-title" id="myModalLabel">修改视频信息</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="update-form" name="update-form" method="post">
 <%--                    仅仅是在传递参数，临时传递一下，不做展示--%>
-                    <input type="hidden" class="form-control" name="userid" id="userid">
+                    <input type="hidden" class="form-control" name="id" id="id" />
 
                     <div class="form-group">
-                        <label for="username" class="col-sm-2 control-label">用户名</label>
+                        <label for="title" class="col-sm-2 control-label">视频名称</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="username" id="username">
+                            <input type="text" class="form-control" name="title" id="title">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Email</label>
+                        <label for="filename" class="col-sm-2 control-label">文件名称</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" name="email" id="email">
+                            <input type="text" class="form-control" name="filename" id="filename">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="phone" class="col-sm-2 control-label">联系电话</label>
+                        <label for="filepath" class="col-sm-2 control-label">视频地址</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" name="phone" id="phone">
+                            <input type="text" class="form-control" name="filepath" id="filepath">
                         </div>
                     </div>
 

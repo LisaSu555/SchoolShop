@@ -2,22 +2,17 @@ package com.zhang.ssmschoolshop.controller.admin;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.zhang.ssmschoolshop.entity.Admin;
-import com.zhang.ssmschoolshop.entity.User;
-import com.zhang.ssmschoolshop.entity.Video;
-import com.zhang.ssmschoolshop.entity.VideoExample;
+import com.zhang.ssmschoolshop.entity.*;
 import com.zhang.ssmschoolshop.service.VideoService;
 import com.zhang.ssmschoolshop.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -46,6 +41,49 @@ public class VideosController {
             return "adminLogin";
         }
         return "videoManage";
+    }
+
+    @GetMapping("/add")
+    public String videoAddPage(HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            return "adminLogin";
+        }
+        return "videoAdd";
+    }
+
+    @PostMapping("save")
+    public String saveVideo(Video video, HttpSession session, Model model) throws IOException {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            //return Msg.fail("请先登录");
+            return "adminLogin";
+        }
+        String saveResult = videoService.saveUser(video);
+        if("0000".equals(saveResult)){
+            // 添加成功时返回这个
+            model.addAttribute("msg","0000");
+            return "redirect:/admin/video/show";
+        }else{
+            //return Msg.fail(saveResult);添加失败时返回这个
+            model.addAttribute("msg",saveResult);
+            return "videoAdd";
+        }
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg updateVideo(VideoVi video, HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            return Msg.fail("请先登录");
+        }
+        String resultMsg = videoService.updateVideo(video);
+        if("0000".equals(resultMsg)){
+            return Msg.success("更新成功!");
+        }else {
+            return Msg.fail(resultMsg);
+        }
     }
 
 }

@@ -6,39 +6,39 @@ $(document).ready(function () {
 
 // 点击编辑后出现模态框
 $(document).on("click",".templatemo-edit-btn",function () {
-    $("#update-user").modal({
+    $("#update-obj").modal({
         backdrop:'static'
     });
-    var userId = $(this).parents("tr").find("td:eq(0)").text();
-    var username = $(this).parents("tr").find("td:eq(1)").text();
-    var email = $(this).parents("tr").find("td:eq(2)").text();
-    var phoneNumber = $(this).parents("tr").find("td:eq(3)").text();
+    var id = $(this).parents("tr").find("td:eq(0)").text();
+    var title = $(this).parents("tr").find("td:eq(1)").text();
+    var filepath = $(this).parents("tr").find("td:eq(2)").text();
+    var filename = $(this).parents("tr").find("input:eq(0)").text();
 
-    $("#userid").val(userId);
-    $("#username").val(username);
-    $("#email").val(email);
-    $("#phone").val(phoneNumber);
+    $("#id").val(id);
+    $("#title").val(title);
+    $("#filepath").val(filepath);
+    $("#filename").val(filename);
 });
 
 //执行保存操作，点击模态框的保存后执行这个方法
 $(document).on("click","#saveUpdate",function () {
-    var userId = $("#userid").val();
-    var username = $("#username").val();
-    var email = $("#email").val();
-    var phone = $("#phone").val();
+    var id = $("#id").val();
+    var title = $("#title").val();
+    var filepath = $("#filepath").val();
+    var filename = $("#filename").val();
 
     $.ajax({
-        url:"/shop/admin/user/update/",
+        url:"/shop/admin/video/update/",
         type:"POST",
         data:{
-            userid:userId,
-            username:username,
-            email:email,
-            telephone:phone
+            id:id,
+            title:title,
+            filepath:filepath,
+            filename:filename
         },
         success:function(result){
             // 隐藏这个模态框
-            $("#update-user").modal('hide');
+            $("#update-obj").modal('hide');
             swal(result.msg,'','success');
             to_page('/shop',currentPage);
         },
@@ -104,19 +104,21 @@ function build_user_table(path,result) {
     var goods = result.info.pageInfo.list;
     $.each(goods, function (index,item) {
         // 为每个字段创建一行显示出来
-        var userid = $("<td></td>").append(item.id);
-        var username = $("<td></td>").append(item.title);
-        var email = $("<td></td>").append(item.filepath);
+        var id = $("<td></td>").append(item.id);
+        var title = $("<td></td>").append(item.title);
+        var filepath = $("<td></td>").append(item.filepath);
         var video = $("<video width='160' height='120' controls></video>").append("<source src='http://localhost:8888/"+item.filename+".mp4' type='video/mp4'>");
+        var hiddenFilename = $("<input type='hidden' />").append(item.filename)
         var editBtn = $("<button></button>").addClass("templatemo-edit-btn").append("编辑");
         var deleteBtn = $("<button></button>").addClass("templatemo-delete-btn").append("删除");
         // 将操作列的按键放在同一个格子里面
         var operateTd = $("<td width='200px'></td>").append(editBtn).append(deleteBtn);
         // 将数据添加到内容区域
-        $("<tr></tr>").append(userid)
-            .append(username)
-            .append(email)
+        $("<tr></tr>").append(id)
+            .append(title)
+            .append(filepath)
             .append(video)
+            .append(hiddenFilename)
             .append(operateTd)
             .appendTo("#goodsinfo tbody");
     })

@@ -7,7 +7,23 @@
     <result column="filename" jdbcType="VARCHAR" property="filename" />
     <result column="filepath" jdbcType="TIMESTAMP" property="filepath" />
   </resultMap>
+
   <select id="selectAllVideos" resultType="com.zhang.ssmschoolshop.entity.Video">
     select * from video
   </select>
+
+  <insert id="insertVideo">
+    insert into video(title,filename,filepath)
+    values ( #{title},#{filename},#{filepath})
+  </insert>
+
+  <update id="updateVideo">
+    update video set
+        title = #{title},
+        filename = #{filename},
+        filepath = #{filepath}
+    where
+        id = #{id}
+  </update>
+
 </mapper>
