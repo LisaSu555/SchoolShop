@@ -12,4 +12,6 @@ public interface VideoService {
     String saveUser(Video video);
 
     String updateVideo(VideoVi video);
+
+    String deleteVideo(int id);
 }

@@ -26,4 +26,8 @@
         id = #{id}
   </update>
 
+  <delete id="deleteVideo">
+    delete from video where id = #{id}
+  </delete>
+
 </mapper>

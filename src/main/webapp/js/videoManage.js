@@ -50,10 +50,10 @@ $(document).on("click","#saveUpdate",function () {
 
 //  删除的方法
 $(document).on("click",".templatemo-delete-btn",function () {
-    var username = $(this).parents("tr").find("td:eq(1)").text();
-    var userId = $(this).parents("tr").find("td:eq(0)").text();
+    var videoTitle = $(this).parents("tr").find("td:eq(1)").text();
+    var videoId = $(this).parents("tr").find("td:eq(0)").text();
     swal({
-            title: "确定删除" + username + "吗？",
+            title: "确定删除" + videoTitle + "吗？",
             type: "warning",
             showCancelButton: true,
             cancelButtonText:"取消",
@@ -64,16 +64,16 @@ $(document).on("click",".templatemo-delete-btn",function () {
         function () {
             /*swal("删除！", "你的虚拟文件已经被删除。", "success");*/
             $.ajax({
-                url: "/shop/admin/user/delete/" + userId,
+                url: "/shop/admin/video/delete/" + videoId,
                 type: "DELETE",
                 success:function (result) {
                     swal(result.msg, "","success");
                     to_page('/shop',currentPage);
                 },
                 error:function () {
-                    /*to_page('/shop',currentPage);*/
+
                 }
-            });
+            })
         });
 });
 

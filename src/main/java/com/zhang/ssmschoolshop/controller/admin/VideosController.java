@@ -6,6 +6,7 @@ import com.zhang.ssmschoolshop.entity.*;
 import com.zhang.ssmschoolshop.service.VideoService;
 import com.zhang.ssmschoolshop.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -83,6 +84,22 @@ public class VideosController {
             return Msg.success("更新成功!");
         }else {
             return Msg.fail(resultMsg);
+        }
+    }
+
+    @DeleteMapping("/delete/{videoId}")
+    @ResponseBody
+    public Msg deleteVideo(@PathVariable("videoId") Integer videoId, HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null) {
+            return Msg.fail("请先登录");
+        }
+        String result = videoService.deleteVideo(videoId);
+
+        if("0000".equals(result)){
+            return Msg.success("删除成功");
+        }else {
+            return Msg.fail(result);
         }
     }
 

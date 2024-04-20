@@ -52,4 +52,13 @@ public class VideoServiceImpl implements VideoService {
         videoMapper.updateVideo(v);
         return "0000";
     }
+
+    @Override
+    public String deleteVideo(int id) {
+        if(id <= 0){
+            return "id不能为0或负数";
+        }
+        videoMapper.deleteVideo(id);
+        return "0000";
+    }
 }

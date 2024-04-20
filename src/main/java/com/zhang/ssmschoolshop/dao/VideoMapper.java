@@ -14,4 +14,6 @@ public interface VideoMapper {
     void insertVideo(@Value("video") Video video);
 
     void updateVideo(Video video);
+
+    void deleteVideo(@Value("id") int id);
 }
