@@ -7,8 +7,7 @@
     <result column="filename" jdbcType="VARCHAR" property="filename" />
     <result column="filepath" jdbcType="TIMESTAMP" property="filepath" />
   </resultMap>
-  <select id="selectAllVideos" resultType="com.zhang.ssmschoolshop.entity.User">
+  <select id="selectAllVideos" resultType="com.zhang.ssmschoolshop.entity.Video">
     select * from video
   </select>
-
 </mapper>

@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zhang.ssmschoolshop.entity.Admin;
 import com.zhang.ssmschoolshop.entity.User;
+import com.zhang.ssmschoolshop.entity.Video;
 import com.zhang.ssmschoolshop.entity.VideoExample;
 import com.zhang.ssmschoolshop.service.VideoService;
 import com.zhang.ssmschoolshop.util.Msg;
@@ -31,7 +32,7 @@ public class VideosController {
     public Msg getAllVideos(@RequestParam(value = "page",defaultValue = "1") Integer pn, HttpServletResponse response, Model model) {
         //一页显示几个数据
         PageHelper.startPage(pn, 10);
-        List<User> list = videoService.selectByExample(new VideoExample());
+        List<Video> list = videoService.selectByExample(new VideoExample());
         //显示几个页号
         PageInfo page = new PageInfo(list,5);
 

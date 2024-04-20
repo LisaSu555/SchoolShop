@@ -11,8 +11,6 @@
     <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/templatemo-style.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -37,10 +35,10 @@
                     <table id="goodsinfo" class="table table-striped table-bordered templatemo-user-table">
                         <thead>
                         <tr>
-                            <td><a href="" class="white-text templatemo-sort-by">id<span class="caret"></span></a></td>
-                            <td><a href="" class="white-text templatemo-sort-by">用户名<span class="caret"></span></a></td>
-                            <td><a href="" class="white-text templatemo-sort-by">Email<span class="caret"></span></a></td>
-                            <td><a href="" class="white-text templatemo-sort-by">联系电话<span class="caret"></span></a></td>
+                            <td><a href="" class="white-text templatemo-sort-by">视频编号<span class="caret"></span></a></td>
+                            <td><a href="" class="white-text templatemo-sort-by">视频名称<span class="caret"></span></a></td>
+                            <td><a href="" class="white-text templatemo-sort-by">视频地址<span class="caret"></span></a></td>
+                            <td><a href="" class="white-text templatemo-sort-by">视频内容<span class="caret"></span></a></td>
                             <td>操作</td>
                         </tr>
                         </thead>

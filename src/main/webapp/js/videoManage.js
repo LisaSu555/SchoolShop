@@ -79,7 +79,7 @@ $(document).on("click",".templatemo-delete-btn",function () {
 
 function to_page(path, page) {
     $.ajax({
-        url: path + "/admin/user/showjson",
+        url: path + "/admin/video/showjson",
         data: "page=" + page,
         type: "get",
         success: function (result) {
@@ -103,22 +103,22 @@ function build_user_table(path,result) {
     $("#goodsinfo tbody").empty();
     var goods = result.info.pageInfo.list;
     $.each(goods, function (index,item) {
-        var userid = $("<td></td>").append(item.userid);
-        var username = $("<td></td>").append(item.username);
-        var email = $("<td></td>").append(item.email);
-        var telephone = $("<td></td>").append(item.telephone);
+        // 为每个字段创建一行显示出来
+        var userid = $("<td></td>").append(item.id);
+        var username = $("<td></td>").append(item.title);
+        var email = $("<td></td>").append(item.filepath);
+        var video = $("<video width='160' height='120' controls></video>").append("<source src='http://localhost:8888/"+item.filename+".mp4' type='video/mp4'>");
         var editBtn = $("<button></button>").addClass("templatemo-edit-btn").append("编辑");
         var deleteBtn = $("<button></button>").addClass("templatemo-delete-btn").append("删除");
-
+        // 将操作列的按键放在同一个格子里面
         var operateTd = $("<td width='200px'></td>").append(editBtn).append(deleteBtn);
-
-
+        // 将数据添加到内容区域
         $("<tr></tr>").append(userid)
-                      .append(username)
-                      .append(email)
-                      .append(telephone)
-                      .append(operateTd)
-                      .appendTo("#goodsinfo tbody");
+            .append(username)
+            .append(email)
+            .append(video)
+            .append(operateTd)
+            .appendTo("#goodsinfo tbody");
     })
 }
 
