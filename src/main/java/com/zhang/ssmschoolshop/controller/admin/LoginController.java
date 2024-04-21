@@ -1,6 +1,4 @@
 package com.zhang.ssmschoolshop.controller.admin;
-
-
 import com.zhang.ssmschoolshop.entity.Admin;
 import com.zhang.ssmschoolshop.service.AdminService;
 import com.zhang.ssmschoolshop.util.Md5Util;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 @Controller
 @RequestMapping("/admin")
 public class LoginController {
@@ -42,6 +39,7 @@ public class LoginController {
             return "adminLogin";
         } else {
             HttpSession session = request.getSession();
+            // 验证成功后将登录信息放入session，一个浏览器是一个会话，不同浏览器之间session不会相同，所以保证了不同用户各自保存登录信息
             session.setAttribute("admin", selectAdmin);
             return "redirect:/admin/user/show";
         }

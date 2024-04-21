@@ -34,11 +34,6 @@ public class AdminOrderController {
     @RequestMapping("/send")
     public String sendOrder(@RequestParam(value = "page",defaultValue = "1")Integer pn, Model model, HttpSession session) {
 
-        Admin admin = (Admin) session.getAttribute("admin");
-        if (admin == null) {
-            return "redirect:/admin/login";
-        }
-
         //一页显示几个数据
         PageHelper.startPage(pn, 2);
 
@@ -65,10 +60,6 @@ public class AdminOrderController {
                 goodsList.add(goods);
             }
 
-            //根据goodsid查询商品
-            /*GoodsExample goodsExample = new GoodsExample();
-            goodsExample.or().andGoodsidIn(goodsIdList);
-            List<Goods> goodsList = goodsService.selectByExample(goodsExample);*/
             order.setGoodsInfo(goodsList);
 
             //查询地址

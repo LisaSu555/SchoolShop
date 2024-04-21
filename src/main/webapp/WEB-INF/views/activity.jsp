@@ -15,8 +15,6 @@
     <title>后台管理</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet'
-          type='text/css'>
     <!-- JS -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
     <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet">

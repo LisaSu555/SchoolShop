@@ -1,9 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: zhangxin
-  Date: 2019/5/13
-  Time: 15:45
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -19,8 +13,6 @@
     Visual Admin Template
     http://www.templatemo.com/preview/templatemo_455_visual_admin
     -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet'
-          type='text/css'>
     <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/templatemo-style.css" rel="stylesheet">
