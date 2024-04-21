@@ -16,15 +16,6 @@
     <script src="${pageContext.request.contextPath}/js/shopcart.js"></script>
     <script src="${pageContext.request.contextPath}/js/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sweetalert.css">
-    <!-- 	<script>
-            $(document).ready(function(){
-                $(".list-group-item").hover(function(){
-                    $(this).children("div.sort-detail").show();
-                },function(){
-                    $(this).children("div.sort-detail").hide();
-                });
-            })
-        </script> -->
 </head>
 <body>
 <div id="main" class="container">
@@ -61,24 +52,7 @@
                                     </thead>
                                     <tbody>
 
-
-
-
                                     </tbody>
-                                    <%--<tfoot>
-                                    <tr>
-                                        <td colspan="6">
-                                            <div class="coupon">
-                                                <!-- <label for="coupon_code"></label>
-                                                    <input id="coupon_code" class="input-text" type="text" placeholder="Coupon code" value="" name="coupon_code"> -->
-                                                <a
-                                                        class="button_act button_act_3 button_act_333 button_act_tp "
-                                                        href="./shopcart.jsp">更新购物车</a>
-                                                <!-- <a class="button_act btn-tip " href="#">Update cart</a> -->
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tfoot>--%>
                                 </table>
                             </div>
                         </form>

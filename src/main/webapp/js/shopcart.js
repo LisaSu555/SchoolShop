@@ -1,59 +1,13 @@
-/*
-$(document).ready(function(){
-	$('.delete-goods').click(function(){
-		var goodsid = $(this).attr("data-goodsid");
-        alert("asfd");
-		// deleteGoods(goodsid);
-	});
-
-	$('.confirm-orders').click(function(){
-		confirmOrders();
-		alert("已成功加入订单，并已发送邮件至卖家，请等待卖家回复！");
-		location.href = "/index.jsp";
-	});
-});*/
-/*
-function deleteGoods(goodsid){
-	$.post("servlet/DeleteCartServlet", { 
-		goodsId: goodsid,
-	});
-}
-
-function confirmOrders(){
-	$.post("servlet/SaleServlet");
-}*/
 $(document).ready(function () {
     var path = $("#path").text();
     showcart();
-
-    /*$('.delete-goods').click(function(){
-        alert("adf");
-        var goodsid = $(this).attr("data-goodsid");
-        $.ajax({
-            url: "/shop/deleteCart" + goodsid,
-            type: "DELETE",
-            success:function (result) {
-                swal(result.msg, "","success");
-                showcart();
-            },
-            error:function () {
-                /!*to_page('/shop',currentPage);*!/
-                swal("删除失败");
-            }
-        })
-    });*/
 });
-
-/*$(document).on("click",".delete-good",function () {
-    alert("afd");
-});*/
 
 function deleteCartGoods(goodsid) {
     $.ajax({
         url: "/shop/deleteCart/" + goodsid,
         type: "DELETE",
         success: function (result) {
-            // swal(result.msg, "","success");
             showcart();
         },
         error:function () {
@@ -120,7 +74,7 @@ function build_cart_table(result) {
 
             var shopimage = $("<td></td>").addClass("product-thumbnail product-thumbnail-2")
                 .append($("<a></a>").attr("href","/shop/detail?goodsid="+item.goodsid)
-                    .append($("<img/>").attr("src","/shop/pictures/"+item.imagePaths[0].path)));
+                    .append($("<img/>").attr("src","http://localhost:8886/"+item.imagePaths[0].path)));
 
             var goodsname = $("<td></td>").addClass("product-name product-name_2")
                 .append($("<a></a>").attr("href","/shop/detail?goodsid="+item.goodsid).append(item.goodsname));

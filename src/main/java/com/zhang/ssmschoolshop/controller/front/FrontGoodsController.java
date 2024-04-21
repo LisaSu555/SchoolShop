@@ -40,21 +40,23 @@ public class FrontGoodsController {
     @Autowired
     private ActivityService activityService;
 
+    /**
+     * 跳转到点击的商品的详情页面
+     * @param goodsid 商品id
+     * @param model model
+     * @param session session
+     * @return 详情页面
+     */
     @RequestMapping(value = "/detail",method = RequestMethod.GET)
     public String detailGoods(Integer goodsid, Model model, HttpSession session) {
-
         if(goodsid == null) {
             return "redirect:/main";
         }
-
         User user = (User) session.getAttribute("user");
-
         //要传回的数据存在HashMap中
         Map<String,Object> goodsInfo = new HashMap<String,Object>();
-
         //查询商品的基本信息
         Goods goods = goodsService.selectById(goodsid);
-
         if (user == null) {
             goods.setFav(false);
         } else {
@@ -65,26 +67,20 @@ public class FrontGoodsController {
                 goods.setFav(true);
             }
         }
-
         //查询商品类别
         Category category = cateService.selectById(goods.getCategory());
-
         //商品图片
         List<ImagePath> imagePath = goodsService.findImagePath(goodsid);
-
         //商品评论
 
         //商品折扣信息
         Activity activity = activityService.selectByKey(goods.getActivityid());
         goods.setActivity(activity);
-
         //返回数据
         goodsInfo.put("goods", goods);
         goodsInfo.put("cate", category);
         goodsInfo.put("image", imagePath);
         model.addAttribute("goodsInfo",goodsInfo);
-//        model.addAllAttributes(goodsInfo);
-
         //评论信息
         CommentExample commentExample=new CommentExample();
         commentExample.or().andGoodsidEqualTo(goods.getGoodsid());
@@ -97,10 +93,17 @@ public class FrontGoodsController {
             commentList.set(i,comment);
         }
         model.addAttribute("commentList",commentList);
-
         return "detail";
     }
 
+    /**
+     * 搜索商品
+     * @param pn
+     * @param keyword
+     * @param model
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String searchGoods(@RequestParam(value = "page",defaultValue = "1") Integer pn, String keyword, Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
@@ -145,6 +148,12 @@ public class FrontGoodsController {
         return "search";
     }
 
+    /**
+     * 将商品添加到收藏
+     * @param goodsid
+     * @param session
+     * @return
+     */
     @RequestMapping("/collect")
     @ResponseBody
     public Msg collectGoods(Integer goodsid, HttpSession session) {
@@ -165,6 +174,12 @@ public class FrontGoodsController {
         return Msg.success("收藏成功");
     }
 
+    /**
+     * 取消收藏
+     * @param goodsid
+     * @param session
+     * @return
+     */
     @RequestMapping("/deleteCollect")
     @ResponseBody
     public Msg deleteFavGoods(Integer goodsid, HttpSession session) {
@@ -179,6 +194,14 @@ public class FrontGoodsController {
         return Msg.success("取消收藏成功");
     }
 
+    /**
+     * 跳转到点击的商品分类页面
+     * @param cate
+     * @param pn
+     * @param model
+     * @param session
+     * @return
+     */
     @RequestMapping("/category")
     public String getCateGoods(String cate, @RequestParam(value = "page",defaultValue = "1") Integer pn, Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
@@ -212,7 +235,6 @@ public class FrontGoodsController {
             List<ImagePath> imagePathList = goodsService.findImagePath(goods.getGoodsid());
 
             goods.setImagePaths(imagePathList);
-
             //判断是否收藏
             if (user == null) {
                 goods.setFav(false);
@@ -224,11 +246,8 @@ public class FrontGoodsController {
                     goods.setFav(true);
                 }
             }
-
             goodsList.set(i, goods);
         }
-
-
         //显示几个页号
         PageInfo page = new PageInfo(goodsList,5);
         model.addAttribute("pageInfo", page);
@@ -236,8 +255,12 @@ public class FrontGoodsController {
         return "category";
     }
 
-
-
+    /**
+     * 对商品评论
+     * @param comment
+     * @param request
+     * @return
+     */
     @RequestMapping("/comment")
     @ResponseBody
     public Msg comment(Comment comment, HttpServletRequest request){

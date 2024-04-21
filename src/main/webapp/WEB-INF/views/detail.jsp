@@ -20,17 +20,11 @@
     <!-- bootstrap v3.3.6 css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
     <!-- style css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-
     <link href="${pageContext.request.contextPath}/css/shopdetail.css" rel="stylesheet">
-    <!-- <script src="./detail/js/jquery.js"></script> -->
     <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
-
-    <%--<script src="${pageContext.request.contextPath}/js/sort.js"></script>--%>
-
     <!-- bootstrap js -->
     <script src="${pageContext.request.contextPath}/css/bootstrap/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/sort.js"></script>
@@ -65,32 +59,13 @@
                     $(panel).show();
                     return fasle; //告诉浏览器  不要纸箱这个链接
                 }); //end click
-
-
                 $(".tabs li:first a").click(); //web 浏览器，单击第一个标签吧
-
             }); //end ready
 
             $(".centerbox li").click(function () {
                 $("li").removeClass("now");
                 $(this).addClass("now");
-
             });
-
-            /*$("#chatto").click(function () {
-                $.ajax({
-                    url: "/shop/chat/", //把表单数据发送到ajax.jsp
-                    type: "POST",
-                    data: {
-                        sendto: 5
-                    },
-                    error: function (request) {
-                        alert(result.msg);
-                    },
-                    success: function (result) {
-                    }
-                });
-            });*/
 
             $('.fav-button').click(function(){
                 //$(this).removeClass("glyphicon-heart-empty");
@@ -136,11 +111,6 @@
                     })
                 }
 
-                /*$.post("servlet/CollectServlet", {
-                 goodsId: goodsId,
-                 });
-                 // alert("商品已加入购物车！");*/
-
                 if(isChangeBtn) {
                     $(this).children("i").toggleClass("fa-heart fa-heart-o");
                     var likeContent = $(this).children("span").text();
@@ -175,7 +145,6 @@
         <div class="shop_menu shop_menu_2 main-detail-div">
             <ul class="cramb_area cramb_area_5 main-detail-nav">
                 <li><a href="/shop/main">首页 /</a></li>
-                <%--<li><a href="index.html">Shop /</a></li>
                 <li><a href="index.html">Headlight/</a></li>
                 <li><a href="index.html">Hats /</a></li>--%>
                 <li class="br-active">${goodsInfo['goods'].goodsname}</li>
@@ -187,7 +156,7 @@
                     <div id="leftbox">
                         <div id="showbox">
                             <c:forEach items="${goodsInfo['image']}" var="path">
-                                <img src="${pageContext.request.contextPath}/pictures/${path.path}" width="400" height="400"/>
+                                <img src="http://localhost:8886/${path.path}" width="400" height="400"/>
                             </c:forEach>
                         </div>
                         <div id="showsum">
@@ -205,30 +174,8 @@
                         <h3>${goodsInfo['goods'].goodsname}</h3>
                     </div>
                     <div class="price_rating">
-                        <%--<a href="#">
-                            <i class="fa fa-star"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-star"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-star"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-star"></i>
-                        </a>
-                        <a class="not-rated" href="#">
-                            <i class="fa fa-star-o"></i>
-                        </a>
-                        <a class="review-link" href="#">
-                            (
-                            <span class="count">2</span>
-                            customer reviews)
-                        </a>--%>
+
                     </div>
-                    <!-- <div class="evavet_description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.</p>
-                    </div> -->
                 </div>
                 <div class="elav_info">
                     <!-- 价格 -->
@@ -394,61 +341,6 @@
                                                     </c:forEach>
                                                 </ol>
                                             </div>
-                                            <%--<div class="review_form_area">
-                                                <div class="review_form">
-                                                    <div class="revew_form_content">
-                                                        <h3 id="reply-title" class="comment-reply-title">
-                                                            Add a review
-                                                            <small>
-                                                                <a id="cancel-comment-reply-link" style="display:none;" href="#" rel="nofollow">Cancel reply</a>
-                                                            </small>
-                                                        </h3>
-                                                        <form id="commentform" class="comment-form" method="post" action="form">
-                                                            <div class="comment-form-rating">
-                                                                <label class="comment">Your Rating</label>
-                                                                <div class="price_rating price_rating_2 price_rating_3">
-                                                                    <a href="#">
-                                                                        <i class="fa fa-star-o"></i>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <i class="fa fa-star-o"></i>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <i class="fa fa-star-o"></i>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <i class="fa fa-star-o"></i>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <i class="fa fa-star-o"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="comment-form-comment">
-                                                                <label class="comment">Your Review</label>
-                                                                <textarea id="comment" aria-required="true" rows="8" cols="45" name="comment"></textarea>
-                                                            </div>
-                                                            <div class="comment-form-author">
-                                                                <label class="comment">
-                                                                    Name
-                                                                    <span class="required required_menu">*</span>
-                                                                </label>
-                                                                <input id="author" class="mix_type" type="text" aria-required="true" size="30" value="" name="author">
-                                                            </div>
-                                                            <div class="comment-form-email">
-                                                                <label class="comment">
-                                                                    Email
-                                                                    <span class="required required_menu">*</span>
-                                                                </label>
-                                                                <input id="email" class="mix_type" type="text" aria-required="true" size="30" value="" name="email">
-                                                            </div>
-                                                            <div class="form-submit">
-                                                                <input id="sub" class="submt" type="submit" value="Submit" name="submit">
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>--%>
                                         </div>
                                     </div>
                                 </div>
@@ -460,12 +352,6 @@
         </div>
     </div>
 </div>
-<!--tab area end-->
-<!-- jquery latest version -->
-<!-- <script src="js/vendor/jquery-1.12.0.min.js"></script> -->
-<!-- bootstrap js -->
-<!-- <script src="js/bootstrap.min.js"></script> -->
-
 </body>
 </html>
 

@@ -357,34 +357,6 @@
                         </li>
                     </ul>
                 </div>
-                <!-- <div class="sort-detail">
-                    <dl class="dl-horizontal">
-                        <dt>手机</dt>
-                        <dd>
-                            <a href="${pageContext.request.contextPath}/category?cate=手机壳">手机壳</a>
-                            <a href="${pageContext.request.contextPath}/category?cate=充电器">充电器</a>
-                            <a href="">电池</a>
-                            <a href="${pageContext.request.contextPath}/category?cate=耳机">耳机</a>
-                        </dd>
-                    </dl>
-                    <dl class="dl-horizontal">
-                        <dt>相机</dt>
-                        <dd>
-                            <a href="">镜头</a>
-                            <a href="">单反</a>
-                            <a href="">胶片</a>
-                            <a href="">摄像</a>
-                        </dd>
-                    </dl>
-                    <dl class="dl-horizontal">
-                        <dt>电脑</dt>
-                        <dd></dd>
-                    </dl>
-                    <dl class="dl-horizontal">
-                        <dt>MP3</dt>
-                        <dd></dd>
-                    </dl>
-                </div> -->
             </div>
             <div id="mycarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -438,12 +410,14 @@
                             <c:forEach items="${digGoods}" var="goods">
                                 <li class="data-item-li">
                                     <div class="to-big">
-                                        <a href="${pageContext.request.contextPath}/detail?goodsid=${goods.goodsid}"><img src="${pageContext.request.contextPath}/pictures/${goods.imagePaths[0].path}" alt=""
-                                                        width="200" height="200"/>
+                                        <a href="${pageContext.request.contextPath}/detail?goodsid=${goods.goodsid}">
+                                            <img src="http://localhost:8886/${goods.imagePaths[0].path}" alt="" width="200" height="200"/>
                                         </a>
                                     </div>
                                     <p class="text-right">
-                                        <a href="${pageContext.request.contextPath}/detail?goodsid=${goods.goodsid}">${goods.goodsname}</a>
+                                        <a href="${pageContext.request.contextPath}/detail?goodsid=${goods.goodsid}">
+                                                ${goods.goodsname}
+                                        </a>
                                     </p>
                                     <div class="text-right">
                                         <b>￥${goods.price}</b>
@@ -537,9 +511,8 @@
                             <c:forEach items="${colGoods}" var="colgoods">
                                 <li class="data-item-li">
                                     <div class="to-big">
-                                        <a href="${pageContext.request.contextPath}/detail?goodsid=${colgoods.goodsid}"> <img
-                                                src="${pageContext.request.contextPath}/pictures/${colgoods.imagePaths[0].path}" alt=""
-                                                width="200" height="200">
+                                        <a href="${pageContext.request.contextPath}/detail?goodsid=${colgoods.goodsid}">
+                                            <img src="http://localhost:8886/${colgoods.imagePaths[0].path}" alt="" width="200" height="200">
                                         </a>
                                     </div>
                                     <p class="text-right">
