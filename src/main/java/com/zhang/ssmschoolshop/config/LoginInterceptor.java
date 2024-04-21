@@ -15,7 +15,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException, IOException {
         // 检查用户是否已经登录，通常是检查session或者token
-        if (request.getSession().getAttribute("admin") != null || request.getSession().getAttribute("user") != null) {
+        if (request.getSession().getAttribute("admin") != null) {
             Object admin = request.getSession().getAttribute("admin");
             Object user = request.getSession().getAttribute("user");
             return true; // 继续执行后续的拦截器和请求处理

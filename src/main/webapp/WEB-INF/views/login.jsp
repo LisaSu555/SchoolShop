@@ -17,33 +17,11 @@
 <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/login.js"></script>
 </head>
-<%--<script>
-
-	$(document).ready(function() {
-
-		
-		$(document).keypress(function(e) {
-			if (e.which == 13) {
-				e.preventDefault();
-				
-				$(".login-input").click();
-				//form.submit();
-			}
-		});
-		input_value();
-	})
-	
-	function input_value() {
-		if (UserID != "null") {
-			document.getElementById("inputEmail3").value = UserID;
-		}
-	}
-</script>--%>
 
 <script type="text/javascript">
 	function reloadcode() {
-		var verify = document.getElementById('code');
-		verify.setAttribute("src", "${pageContext.request.contextPath}/verificationcodeimg?it=" + Math.random());
+		// var verify = document.getElementById('code');
+		// verify.setAttribute("src", "${pageContext.request.contextPath}/verificationcodeimg?it=" + Math.random());
 	}
 </script>
 
@@ -76,15 +54,15 @@
 										name="password" placeholder="密码">
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="confirmlogo" class="col-sm-2 control-label">验证码</label>
-								<img src="${pageContext.request.contextPath}/verificationcodeimg" id="code" onclick="reloadcode()"
-									style="cursor: pointer;" alt="看不清楚,换一张" width="100px">
-								<div class="col-sm-10" style="width: 160px">
-									<input type="text" class="form-control" id="confirmlogo"
-										name="confirmlogo" placeholder="验证码">
-								</div>
-							</div>
+<%--							<div class="form-group">--%>
+<%--								<label for="confirmlogo" class="col-sm-2 control-label">验证码</label>--%>
+<%--								<img src="${pageContext.request.contextPath}/verificationcodeimg" id="code" onclick="reloadcode()"--%>
+<%--									style="cursor: pointer;" alt="看不清楚,换一张" width="100px">--%>
+<%--								<div class="col-sm-10" style="width: 160px">--%>
+<%--									<input type="text" class="form-control" id="confirmlogo"--%>
+<%--										name="confirmlogo" placeholder="验证码">--%>
+<%--								</div>--%>
+<%--							</div>--%>
 							<div style="margin-left:80px;color:red;">
 							</div>
 							

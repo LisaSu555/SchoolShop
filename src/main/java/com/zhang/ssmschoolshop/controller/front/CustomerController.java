@@ -59,17 +59,16 @@ public class CustomerController {
 
 
     @RequestMapping("/loginconfirm")
-    public String loginConfirm(User user, Model loginResult, HttpServletRequest request, @RequestParam("confirmlogo") String confirmlogo) {
-        System.out.println("传进来的用户帐号和密码为:" + user);
+    public String loginConfirm(User user, Model loginResult, HttpServletRequest request/**, @RequestParam("confirmlogo") String confirmlogo*/) {
+        //System.out.println("传进来的用户帐号和密码为:" + user);
         //进行用户密码MD5加密验证
         user.setPassword(Md5Util.MD5Encode(user.getPassword(), "UTF-8"));
         HttpSession session = request.getSession();
-        String verificationCode = (String) session.getAttribute("certCode");
-        if (!confirmlogo.equals(verificationCode)) {
-            loginResult.addAttribute("errorMsg", "验证码错误");
-            return "login";
-
-        }
+        //String verificationCode = (String) session.getAttribute("certCode");
+//        if (!confirmlogo.equals(verificationCode)) {
+//            loginResult.addAttribute("errorMsg", "验证码错误");
+//            return "login";
+//        }
         List<User> userList = new ArrayList<User>();
         UserExample userExample = new UserExample();
         userExample.or().andUsernameEqualTo(user.getUsername()).andPasswordEqualTo(user.getPassword());

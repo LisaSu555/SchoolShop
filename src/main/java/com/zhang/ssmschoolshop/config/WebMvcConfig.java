@@ -12,7 +12,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/**") // 拦截所有路径
                 .excludePathPatterns("/admin/login", "/admin/confirmLogin",
-                        "/","/login","/register","/order*","/cart*","/search","/category*","/detail","/main",
+                        "/","/login","/loginconfirm","/register","/registerresult","/logout","/order*","/cart*","/search","/category*","/detail","/main","/information","/info/**",
+                        "/save*","/delete*","/insert*","/finish*","/error",
                         "/css/**","/js/**","/fonts/**","/image/**"); // 排除登录和注册接口
     }
 
