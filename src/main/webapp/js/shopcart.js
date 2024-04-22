@@ -58,8 +58,11 @@ function build_cart_table(result) {
     var totalMoney = 0;
 
     if(goods.length === 0) {
-        var spareTd = $('<tr> <td colspan="6"> <div class="coupon" style="margin-left:37%;">购物车还是空的，快去<a href="/shop/main" style="color:red;">首页</a>看看吧！ </div> </td> </tr>');
+        var spareTd = $('<tr> <td colspan="6"> <div class="coupon" style="margin-left:37%;">购物车还是空的，快去<a href="/shop/main" style="color:red;">首页</a>看看吧！ </div> </td> </tr>') ;
         spareTd.appendTo("#cart-table tbody");
+        // $("#confirmBtn").hidden;
+        $("#confirmBtn").attr("style", "display:none;");  //隐藏
+        // $("#confirmBtn").attr("style", "display:block;"); //显示
     } else {
         $.each(goods, function (index,item) {
 

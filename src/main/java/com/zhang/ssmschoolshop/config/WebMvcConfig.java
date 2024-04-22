@@ -13,7 +13,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**") // 拦截所有路径
                 .excludePathPatterns("/admin/login", "/admin/confirmLogin",
                         "/","/login","/loginconfirm","/register","/registerresult","/logout","/order*","/cart*","/search","/category*","/detail","/main","/information","/info/**",
-                        "/show*","/save*","/add*","/delete*/**","/insert*","/finish*","/error",
+                        "/show*","/save*","/add*","/collect","/delete*/**","/insert*","/finish*","/error",
                         "/css/**","/js/**","/fonts/**","/image/**","/info/**"); // 排除登录和注册接口
     }
 

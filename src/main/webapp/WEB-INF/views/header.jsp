@@ -10,7 +10,6 @@
 <div class="row">
     <div class="col-md-4" role="navigation">
         <!-- <h1 style="font-size: 20px;margin-top: 9px">东大咸鱼</h1> -->
-
         <ul class="nav nav-pills">
             <c:if test="${empty sessionScope.user}">
                 <li><a href="${pageContext.request.contextPath}/login" style="color: #F22E00">请登录</a></li>
@@ -30,7 +29,9 @@
                 </li>
             </c:if>
 
-            <li><a href="${pageContext.request.contextPath}/register">注册</a></li>
+            <c:if test="${empty sessionScope.user}">
+                <li><a href="${pageContext.request.contextPath}/register">注册</a></li>
+            </c:if>
         </ul>
     </div>
     <div class="col-md-8">

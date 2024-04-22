@@ -51,7 +51,6 @@
 
     <div id="header">
         <%@ include file="header.jsp" %>
-
         <!-- 旋转图 -->
         <div class="header-bottom">
             <div class="sort">
@@ -462,7 +461,7 @@
                                 <li class="data-item-li">
                                     <div class="to-big">
                                         <a href="${pageContext.request.contextPath}/detail?goodsid=${housegoods.goodsid}"> <img
-                                                src="${pageContext.request.contextPath}/pictures/${housegoods.imagePaths[0].path}" alt=""
+                                                src="http://localhost:8886/pictures/${housegoods.imagePaths[0].path}" alt=""
                                                 width="200" height="200">
                                         </a>
                                     </div>
@@ -560,7 +559,7 @@
                                 <li class="data-item-li">
                                     <div class="to-big">
                                         <a href="${pageContext.request.contextPath}/detail?goodsid=${bookgoods.goodsid}"> <img
-                                                src="${pageContext.request.contextPath}/pictures/${bookgoods.imagePaths[0].path}" alt=""
+                                                src="http://localhost:8886/${bookgoods.imagePaths[0].path}" alt=""
                                                 width="200" height="200">
                                         </a>
                                     </div>

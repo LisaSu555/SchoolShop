@@ -50,11 +50,6 @@
     <div class="templatemo-content col-1 light-gray-bg">
         <jsp:include page="adminOrderNav.jsp"/>
         <div class="templatemo-content-container">
-            <%--<div class="templatemo-content-widget white-bg">--%>
-            <%--<h2 class="margin-bottom-10">Geo Charts</h2>--%>
-            <%--<p class="margin-bottom-0">Credit goes to <a href="http://jqvmap.com" target="_parent">JQVMap</a>.</p>--%>
-            <%--</div>--%>
-
             <c:forEach items="${pageInfo.list}" var="orderInfo">
                 <div class="templatemo-flex-row flex-content-row">
                     <div class="col-1">
@@ -157,14 +152,14 @@
                 </div>
                 <ul class="pagination">
                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/order/send?page=1" aria-label="Next">
+                        <a href="${pageContext.request.contextPath}/admin/order/complete?page=1" aria-label="Next">
                             <span aria-hidden="true">首页</span>
                         </a>
                     </li>
 
                     <c:if test="${pageInfo.hasPreviousPage}">
                         <li>
-                            <a href="${pageContext.request.contextPath}/admin/order/send?page=${pageInfo.pageNum - 1}" aria-label="Previous">
+                            <a href="${pageContext.request.contextPath}/admin/order/complete?page=${pageInfo.pageNum - 1}" aria-label="Previous">
                                 <span aria-hidden="true"><i class="fa fa-backward"></i></span>
                             </a>
                         </li>
@@ -172,22 +167,22 @@
 
                     <c:forEach items="${pageInfo.navigatepageNums}" var="pageNums">
                         <c:if test="${pageNums == pageInfo.pageNum}">
-                            <li class="active"><a href="${pageContext.request.contextPath}/admin/order/send?page=${pageNums}">${pageNums}</a></li>
+                            <li class="active"><a href="${pageContext.request.contextPath}/admin/order/complete?page=${pageNums}">${pageNums}</a></li>
                         </c:if>
                         <c:if test="${pageNums != pageInfo.pageNum}">
-                            <li><a href="${pageContext.request.contextPath}/admin/order/send?page=${pageNums}">${pageNums}</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/order/complete?page=${pageNums}">${pageNums}</a></li>
                         </c:if>
                     </c:forEach>
 
                     <c:if test="${pageInfo.hasNextPage}">
                         <li>
-                            <a href="${pageContext.request.contextPath}/admin/order/send?page=${pageInfo.pageNum + 1}" aria-label="Next">
+                            <a href="${pageContext.request.contextPath}/admin/order/complete?page=${pageInfo.pageNum + 1}" aria-label="Next">
                                 <span aria-hidden="true"><i class="fa fa-forward"></i></span>
                             </a>
                         </li>
                     </c:if>
                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/order/send?page=${pageInfo.pages}" aria-label="Next">
+                        <a href="${pageContext.request.contextPath}/admin/order/complete?page=${pageInfo.pages}" aria-label="Next">
                             <span aria-hidden="true">末页</span>
                         </a>
                     </li>

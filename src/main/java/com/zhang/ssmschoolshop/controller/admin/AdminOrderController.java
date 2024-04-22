@@ -125,23 +125,16 @@ public class AdminOrderController {
                 goods.setNum(orderItem.getNum());
                 goodsList.add(goods);
             }
-            //根据goodsid查询商品
-           /* GoodsExample goodsExample = new GoodsExample();
-            goodsExample.or().andGoodsidIn(goodsIdList);
-            List<Goods> goodsList = goodsService.selectByExample(goodsExample);*/
             order.setGoodsInfo(goodsList);
-
             //查询地址
             Address address = orderService.getAddressByKey(order.getAddressid());
             order.setAddress(address);
-
             orderList.set(i, order);
         }
 
         //显示几个页号
         PageInfo page = new PageInfo(orderList,5);
         model.addAttribute("pageInfo", page);
-
         return "adminOrderReceive";
     }
 
@@ -153,13 +146,12 @@ public class AdminOrderController {
         }
         //一页显示几个数据
         PageHelper.startPage(pn, 2);
-
         //查询已完成订单
         OrderExample orderExample = new OrderExample();
         orderExample.or().andIssendEqualTo(true).andIsreceiveEqualTo(true).andIscompleteEqualTo(true);
+        orderExample.setOrderByClause("orderTime desc");
         List<Order> orderList = orderService.selectOrderByExample(orderExample);
         model.addAttribute("sendOrder", orderList);
-
         //查询该订单中的商品
         for (int i = 0; i < orderList.size(); i++) {
             //获取订单项中的goodsid
@@ -168,28 +160,16 @@ public class AdminOrderController {
             orderItemExample.or().andOrderidEqualTo(order.getOrderid());
             List<OrderItem> orderItemList = orderService.getOrderItemByExample(orderItemExample);
             List<Integer> goodsIdList = new ArrayList<>();
-            /*for (OrderItem orderItem : orderItemList) {
-                goodsIdList.add(orderItem.getGoodsid());
-            }*/
-
             List<Goods> goodsList = new ArrayList<>();
             for (OrderItem orderItem : orderItemList) {
-//                goodsIdList.add(orderItem.getGoodsid());
                 Goods goods = goodsService.selectById(orderItem.getGoodsid());
                 goods.setNum(orderItem.getNum());
                 goodsList.add(goods);
             }
-
-            //根据goodsid查询商品
-            /*GoodsExample goodsExample = new GoodsExample();
-            goodsExample.or().andGoodsidIn(goodsIdList);
-            List<Goods> goodsList = goodsService.selectByExample(goodsExample);*/
             order.setGoodsInfo(goodsList);
-
             //查询地址
             Address address = orderService.getAddressByKey(order.getAddressid());
             order.setAddress(address);
-
             orderList.set(i, order);
         }
 

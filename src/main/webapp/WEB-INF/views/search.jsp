@@ -55,7 +55,8 @@
                         <c:forEach items="${pageInfo.list}" var="goods">
                             <li class="data-item-li">
                                 <div class="to-big">
-                                    <a href="${pageContext.request.contextPath}/detail?goodsid=${goods.goodsid}"> <img src="${pageContext.request.contextPath}/pictures/${goods.imagePaths[0].path}" width="260px" height="260px" alt=""/>
+                                    <a href="${pageContext.request.contextPath}/detail?goodsid=${goods.goodsid}">
+                                        <img src="http://localhost:8886/${goods.imagePaths[0].path}" width="260px" height="260px" alt=""/>
                                     </a>
                                 </div>
                                 <p class="text-right">

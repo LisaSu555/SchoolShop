@@ -14,13 +14,12 @@ import java.util.UUID;
  * @备注
  **/
 public class ImageUtil {
-
     public static String imagePath(MultipartFile file, String shopName) {
         if (file.isEmpty()) {
             return "false";
         }
         int size = (int) file.getSize();
-        String path = "D:/upload";
+        String path = "D:/Photos/pictures";
         String os = System.getProperty("os.name");
         if(!os.toLowerCase().startsWith("windows")){
             // todo mac需要修改地址
@@ -45,7 +44,5 @@ public class ImageUtil {
             e.printStackTrace();
             return "false";
         }
-
-
     }
 }

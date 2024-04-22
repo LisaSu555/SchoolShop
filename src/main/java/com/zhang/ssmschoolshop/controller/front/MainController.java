@@ -43,7 +43,6 @@ public class MainController {
         //书籍
         List<Goods> bookGoods = getCateGoods("书籍", userid);
         model.addAttribute("bookGoods", bookGoods);
-
         return "main";
     }
 
@@ -68,7 +67,6 @@ public class MainController {
         //书籍
         List<Goods> bookGoods = getCateGoods("书籍", userid);
         model.addAttribute("bookGoods", bookGoods);
-
         return "main";
     }
 

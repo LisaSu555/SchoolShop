@@ -69,19 +69,11 @@ public class GoodsController {
 
     @RequestMapping("/add")
     public String showAdd(@ModelAttribute("succeseMsg") String msg, Model model, HttpSession session) {
-        Admin admin = (Admin) session.getAttribute("admin");
-        if (admin == null) {
-            return "redirect:/admin/login";
-        }
-
         if (!msg.equals("")) {
             model.addAttribute("msg", msg);
         }
-
         List<Category> categoryList = cateService.selectByExample(new CategoryExample());
         model.addAttribute("categoryList", categoryList);
-
-
         //还需要查询分类传给addGoods页面
         return "addGoods";
     }
@@ -89,11 +81,6 @@ public class GoodsController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public Msg updateGoods(Goods goods, HttpSession session) {
-        Admin admin = (Admin) session.getAttribute("admin");
-        if (admin == null) {
-            return Msg.fail("请先登录");
-        }
-        /* goods.setGoodsid(goodsid);*/
         goodsService.updateGoodsById(goods);
         return Msg.success("更新成功!");
     }
@@ -111,7 +98,6 @@ public class GoodsController {
                            HttpServletRequest request,
                            HttpServletResponse response,
                            RedirectAttributes redirectAttributes) throws IOException {
-        /*goods.setCategory(1);*/
         goods.setUptime(new Date());
         goods.setActivityid(1);
         goodsService.addGoods(goods);
@@ -119,15 +105,11 @@ public class GoodsController {
             String fileName = goods.getGoodsname()+ multipartFile.getOriginalFilename();
             if (multipartFile != null) {
                String ImagePath= ImageUtil.imagePath(multipartFile,fileName);
-               System.out.println("最后存入数据的图片名字为:"+ImagePath);
                 //把图片路径存入数据库中
               goodsService.addImagePath(new ImagePath(null, goods.getGoodsid(), ImagePath));
-
             }
         }
-
         redirectAttributes.addFlashAttribute("succeseMsg", "商品添加成功!");
-
         return "redirect:/admin/goods/add";
     }
 

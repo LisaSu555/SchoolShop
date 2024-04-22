@@ -13,6 +13,7 @@ import com.zhang.ssmschoolshop.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -64,11 +65,6 @@ public class CustomerController {
         //进行用户密码MD5加密验证
         user.setPassword(Md5Util.MD5Encode(user.getPassword(), "UTF-8"));
         HttpSession session = request.getSession();
-        //String verificationCode = (String) session.getAttribute("certCode");
-//        if (!confirmlogo.equals(verificationCode)) {
-//            loginResult.addAttribute("errorMsg", "验证码错误");
-//            return "login";
-//        }
         List<User> userList = new ArrayList<User>();
         UserExample userExample = new UserExample();
         userExample.or().andUsernameEqualTo(user.getUsername()).andPasswordEqualTo(user.getPassword());
@@ -172,18 +168,14 @@ public class CustomerController {
 
     @RequestMapping("/info/list")
     public String list(HttpServletRequest request, Model orderModel) {
-
         HttpSession session = request.getSession();
         User user;
         user = (User) session.getAttribute("user");
-
         if (user == null) {
             return "redirect:/login";
         }
-
         OrderExample orderExample = new OrderExample();
         orderExample.or().andUseridEqualTo(user.getUserid());
-
         List<Order> orderList = orderService.selectOrderByExample(orderExample);
         orderModel.addAttribute("orderList", orderList);
         Order order;
@@ -196,11 +188,17 @@ public class CustomerController {
             OrderItemExample orderItemExample = new OrderItemExample();
             orderItemExample.or().andOrderidEqualTo(order.getOrderid());
             orderItemList = orderService.getOrderItemByExample(orderItemExample);
+            // 开始查询该订单中有多少个商品
             List<Goods> goodsList = new ArrayList<>();
             List<Integer> goodsIdList = new ArrayList<>();
+            // 将订单中的id找出来放入list
             for (Integer j = 0; j < orderItemList.size(); j++) {
                 orderItem = orderItemList.get(j);
                 goodsIdList.add(orderItem.getGoodsid());
+            }
+            // 为了防止出错，如果订单里面没有商品，则直接跳过
+            if(CollectionUtils.isEmpty(goodsIdList)){
+                continue;
             }
             GoodsExample goodsExample = new GoodsExample();
             goodsExample.or().andGoodsidIn(goodsIdList);
@@ -211,7 +209,6 @@ public class CustomerController {
             orderList.set(i, order);
         }
         orderModel.addAttribute("orderList", orderList);
-
         return "list";
     }
 
