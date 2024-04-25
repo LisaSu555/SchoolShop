@@ -14,7 +14,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/admin/login", "/admin/confirmLogin",
                         "/","/login","/loginconfirm","/register","/registerresult","/logout","/order*","/cart*","/search","/category*","/detail","/main","/information","/info/**",
                         "/show*","/save*","/add*","/collect","/delete*/**","/insert*","/finish*","/error",
-                        "/css/**","/js/**","/fonts/**","/image/**","/info/**"); // 排除登录和注册接口
+                        "/css/**","/js/**","/fonts/**","/image/**","/info/**",/*排除登录和注册接口*/
+                        "/test/*","/admin/test/*"//后台或前台的测试
+                );
     }
 
     @Override

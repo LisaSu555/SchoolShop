@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -300,6 +301,13 @@ public class CustomerController {
         HttpSession session = request.getSession();
         session.removeAttribute("user");
         return "redirect:/login";
+    }
+
+    @RequestMapping(value = "/test/user_list",method = RequestMethod.GET)
+    @ResponseBody
+    public List<User> testData(){
+        List<User> users = userService.selectByExample(new UserExample());
+        return users;
     }
 
 }
